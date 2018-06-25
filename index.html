@@ -1,0 +1,268 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/moon.css">
+		<style>
+			strong {
+				color: #fa0;
+			}
+			.reveal h4 {
+				text-transform: none;
+			}
+
+			.reveal .code-side-bg {
+				position: absolute;
+				top: -500%;
+				right: -100%;
+				bottom: -500%;
+				left: 60%;
+				background: #000;
+				z-index: 0;
+			}
+
+			.reveal .code-side-row {
+				position: relative;
+				z-index: 1;
+				margin-bottom: 3%;
+				font-size: 0.8em;
+			}
+
+			.reveal .code-side-row:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+
+			.reveal .code-side-left {
+				width: 60%;
+				float: left;
+				box-sizing: border-box;
+				padding: 0 2%;
+				text-align: right;
+				color: #eee8d5;
+			}
+			
+			.reveal .code-side-right {
+				float: right;
+				width: 40%;
+				box-sizing: border-box;
+				padding: 0 2%;
+				text-align: left;
+				color: #eee8d5;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+<!--
+	Why
+		Maths
+		Generalization
+	Currying
+		Principle and syntax
+		Trick non-FP languages
+	Iterating
+		map
+		filter
+		union
+		intersection
+		prop
+		eq
+	Composition
+		LTR
+		RTL
+	Benefits
+		Scalability
+		Simplicity
+		Testability
+		Out of the box organisation
+-->		
+
+<section data-markdown><textarea data-template>
+
+	## Practical functional programming <!-- .element: style="text-transform:none" -->
+	_The movie_ <!-- .element: class="fragment" -->
+
+</textarea></section>
+<section>
+	<section data-markdown><textarea data-template>
+
+		### This is pointless<span class="fragment" style="font-size: 2em" data-fragment-index="1"> .</span>
+		<!-- .element: class="fragment shrink" data-fragment-index="2" -->
+
+		### But here are the promises: <!-- .element: class="fragment" data-fragment-index="2" -->
+		- Out of the box organisation <!-- .element: class="fragment" -->
+		- Simplicity <!-- .element: class="fragment" -->
+		- Testability <!-- .element: class="fragment" -->
+
+		<aside class="notes">
+			Don't let your dreams be dreams
+		</aside>
+
+	</textarea></section>
+</section>
+<section data-markdown><textarea data-template>
+
+	### Remember functions?
+
+	<aside class="notes">
+		Engage audience.
+
+		Forgotten by many developers.
+		Why? Probably because of programming trends, and fancy patterns.
+		
+		OOP tackles nicely complex problems but let's not forget that simple stuff should remain simple.
+	</aside>
+
+</textarea></section>
+<section data-markdown data-transition="fade-out"><textarea data-template>
+	
+	### λ-functions <!-- .element: style="text-transform: none;" -->
+	<ul>
+		<li class="fragment">Are the simplest way to **abstract a computation**</li>
+		<li class="fragment">Take one **single argument**</li>
+		<li class="fragment">Are preferrably pure</li>
+	</ul>
+
+	**a → b** <!-- .element: class="fragment" -->
+
+</textarea></section>
+<section data-markdown data-transition="fade-in"><textarea data-template>
+
+	#### Some λ-functions:
+
+	```
+	negate = a → -a
+	```
+	<!-- .element: class="fragment" -->
+	```
+	square = a → a * a
+	```
+	<!-- .element: class="fragment" -->
+	```
+	theSoCalledGreet = a → "Hello " + a
+	// Don't we deserve better than that?
+	```
+	<!-- .element: class="fragment" -->
+	```
+	concat = a → b → a + b
+	theSoCalledGreet = concat("Hello")
+	```
+	<!-- .element: class="fragment" -->
+
+</textarea></section>
+<section data-markdown><textarea data-template>
+
+	### Congratualtions, you just **curried** a function for the first time!
+
+</textarea></section>
+<section>
+	<section data-markdown><textarea data-template>
+
+		### Code time - bring it on!
+
+		<small>We'll be using **Javascript** to train those concepts</small>
+	
+		<a href="https://jsfiddle.net/blint/7fsc5ab8/">https://jsfiddle.net/blint/7fsc5ab8/</a>
+
+	</textarea></section>
+	<section data-markdown><textarea data-template>
+
+		<div class="code-side-bg"></div>
+
+		<div class="code-side-row">
+			<h3 class="code-side-left">All you need to know</h3>
+		</div>
+
+		<div class="code-side-row">
+			<div class="code-side-left">
+				Lambda function
+			</div>
+			<div class="code-side-right">
+				```
+				a => b
+				```
+			</div>
+		</div>
+
+		<div class="code-side-row">
+			<div class="code-side-left">
+				Function application
+			</div>
+			<div class="code-side-right">
+				```
+				a(b)
+				```
+			</div>
+		</div>
+
+		<div class="code-side-row">
+			<div class="code-side-left">
+				Arithmetics
+			</div>
+			<div class="code-side-right">
+				`a + b`<br/>
+				`a - b`<br/>
+				`a * b`<br/>
+				`a / b`<br/>
+				`-a`
+			</div>
+		</div>
+
+		<div class="code-side-row">
+			<div class="code-side-left">
+				String concatenation
+			</div>
+			<div class="code-side-right">
+				```
+				a + b
+				```
+			</div>
+		</div>
+
+	</textarea></section>
+</section>
+<section data-markdown><textarea data-template>
+	
+	### Benefits
+	- Scalability
+	- Simplicity
+	- Testability
+	- Out of the box organisation
+
+</textarea></section>
+
+<section data-markdown>
+	<textarea data-template>
+	</textarea>
+</section>
+
+			</div>
+		</div>
+
+		<img
+			src="https://mention.com/wp-content/themes/mention/img/logo-mention.svg"
+			height="auto"
+			width="200px"
+			style="position: absolute; top: 3%; left: 4%; opacity: .85;"
+		/>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.js"></script>
+		<script>
+			Reveal.initialize({
+                controls: false,
+				history: true,
+                dependencies: [
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/notes/notes.js', async: true },
+				],
+            });
+		</script>
+	</body>
+</html>
