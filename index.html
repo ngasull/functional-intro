@@ -500,16 +500,44 @@
   <section data-markdown><textarea data-template>
 
     ### Final boss
+    
+    You'll need:
+    - `eq = a → b → a == b`
+    - `prop = attr → obj → obj[attr]`
+    - `|` is left-to-right composition
+    - `.` is left-to-right composition
 
   </textarea></section>
   <section data-markdown><textarea data-template>
 
-    
+    Which function keeps mentions having a tone of 1?
 
-    1. ``
-    2. ``
-    3. ``
-    4. ``
+    1. `filter(eq(1))(prop('tone'))`
+    2. `filter(eq(1) . prop('tone'))`
+    3. `filter(prop('tone'))(eq(1))`
+    4. `eq(1)(filter(prop('tone')))`
+
+    `prop = attr → obj → obj[attr]`
+
+  </textarea></section>
+  <section data-markdown><textarea data-template>
+
+    How to make a kebab pizza?
+
+    1. `makeDough | pourTomatoSauce | add (cook . kebabMeat)`
+    2. `makeDough | pourTomatoSauce | add (cook | kebabMeat)`
+    3. `makeDough . pourTomatoSauce . add (cook | kebabMeat)`
+    4. `makeDough . pourTomatoSauce . add (cook . kebabMeat)`
+
+  </textarea></section>
+  <section data-markdown><textarea data-template>
+
+    Dye the kittens of age 1 in pink (only them!)
+
+    1. `filter(eq(1)(prop('age')) . map(dyePink)`
+    2. `filter(eq(1) . prop('age')) . map(dyePink)`
+    3. `filter(eq(1)(prop('age')) | map(dyePink)`
+    4. `filter(eq(1) . prop('age')) | map(dyePink)`
 
   </textarea></section>
 </section>
