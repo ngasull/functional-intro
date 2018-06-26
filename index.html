@@ -7,6 +7,12 @@
 			strong {
 				color: #fa0;
 			}
+
+      b {
+				color: #fff;
+				font-weight: bold;
+			}
+
 			.reveal h4 {
 				text-transform: none;
 			}
@@ -255,41 +261,91 @@
 </textarea></section>
 <section data-markdown><textarea data-template>
 
-	### Iterating <!-- .element: class="fragment shrink" data-fragment-index="1" -->
-	Manipulating dynamic collections happens often <!-- .element: class="fragment shrink" data-fragment-index="1" -->
+	### Iterating
+	Manipulating dynamic collections happens often
 
+</textarea></section>
+<section data-markdown><textarea data-template>
+
+	#### Transforming items
   ```
   let newList = []
-  let i;
+  let i
   for (i = 0; i < list.length; i++) {
-    let newItem = operation(list[i])
-    newList.push(newItem);
+    let item = operation(list[i])
+    newList.push(item)
   }
   ```
-	<!-- .element: class="fragment" data-fragment-index="1" -->
 
 	<small>
-		<span class="fragment" data-fragment-index="5">🎉 map = </span><span class="fragment" style="color: #fa0;" data-fragment-index="2">operation →</span><span class="fragment" data-fragment-index="3"> list →</span><span class="fragment" data-fragment-index="4" style="color: #1799dd;"> mappedList</span>
+		<span class="fragment" data-fragment-index="5">🎉 <b>map</b> = </span><span class="fragment" style="color: #fa0;" data-fragment-index="2">operation →</span><span class="fragment" data-fragment-index="3"> list →</span><span class="fragment" data-fragment-index="4" style="color: #1799dd;"> mappedList</span>
 	</small>
 
+  ```
+  let newList = map(operation)(list)
+  ```
+	<!-- .element: class="fragment" data-fragment-index="6" -->
+
 </textarea></section>
 <section data-markdown><textarea data-template>
 
-	### Iterating
+	#### Filtering items
+  ```
+  let newList = []
+  let i
+  for (i = 0; i < list.length; i++) {
+    let item = operation(list[i])
+    if (condition(item)) {    // Ex.: item => item > 42
+      newList.push(item)
+    }
+  }
+  ```
+
+	<small>
+		<span class="fragment" data-fragment-index="5">🎉 <b>filter</b> = </span><span class="fragment" style="color: #fa0;" data-fragment-index="2">condition →</span><span class="fragment" data-fragment-index="3"> list →</span><span class="fragment" data-fragment-index="4" style="color: #1799dd;"> filteredList</span>
+	</small>
+
+  ```
+  let newList = filter(condition)(list)
+  ```
+	<!-- .element: class="fragment" data-fragment-index="6" -->
 
 </textarea></section>
 <section data-markdown><textarea data-template>
 
-	### Benefits
-	- Scalability
-	- Simplicity
-	- Testability
-	- Out of the box organisation
+	#### Accumulating items
+  ```
+  let acc = 0
+  let i
+  for (i = 0; i < list.length; i++) {
+    acc = operation(acc, list[i])
+    // Ex.: acc = acc + list[i]
+  }
+  ```
+
+	<small>
+		<span class="fragment" data-fragment-index="5">🎉 <b>reduce</b> = </span><span class="fragment" style="color: #fa0;" data-fragment-index="1">operation →</span><span class="fragment" data-fragment-index="2" style="color: #CD4B5B;"> initialValue →</span><span class="fragment" data-fragment-index="3"> list →</span><span class="fragment" data-fragment-index="4" style="color: #1799dd;"> filteredList</span>
+	</small>
+
+  ```
+  let acc = reduce(a => b => a + b)(0)(list)
+  ```
+	<!-- .element: class="fragment" data-fragment-index="6" -->
+  ```
+  let acc = reduce(add)(0)(list)
+  ```
+	<!-- .element: class="fragment" data-fragment-index="7" -->
+
+</textarea></section>
+<section data-markdown><textarea data-template>
+
+  ### Now action!!
 
 </textarea></section>
 
 <section data-markdown>
 	<textarea data-template>
+    ### Thank you ❤️
 	</textarea>
 </section>
 
