@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<title>Practical functional programming</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/moon.css">
 		<style>
@@ -133,19 +134,25 @@
 
 	#### Some λ-functions:
 
+	Negate <!-- .element: style="font-size: .7em; text-align: left; margin: 0 0 -1% 5%; font-style: italic;" -->
 	```
 	negate = a → -a
 	```
 	<!-- .element: class="fragment" -->
+	Square <!-- .element: class="fragment" style="font-size: .7em; text-align: left; margin: 0 0 -1% 5%; font-style: italic;" -->
 	```
 	square = a → a * a
 	```
 	<!-- .element: class="fragment" -->
+
+	Greet ("Hello blablabla") <!-- .element: class="fragment" style="font-size: .7em; text-align: left; margin: 0 0 -1% 5%; font-style: italic;" -->
 	```
 	theSoCalledGreet = a → "Hello " + a
 	// Don't we deserve better than that?
 	```
 	<!-- .element: class="fragment" -->
+
+	Concatenate <!-- .element: class="fragment" style="font-size: .7em; text-align: left; margin: 0 0 -1% 5%; font-style: italic;" -->
 	```
 	concat = a → b → a + b
 	theSoCalledGreet = concat("Hello")
@@ -165,7 +172,7 @@
 
 		<small>We'll be using **Javascript** to train those concepts</small>
 	
-		<a href="https://jsfiddle.net/blint/7fsc5ab8/">https://jsfiddle.net/blint/7fsc5ab8/</a>
+		<a href="https://jsfiddle.net/blint/g5skuaq4/">https://jsfiddle.net/blint/g5skuaq4/</a>
 
 	</textarea></section>
 	<section data-markdown><textarea data-template>
@@ -196,6 +203,15 @@
 
 		<div class="code-side-row">
 			<div class="code-side-left">
+				String concatenation
+			</div>
+			<div class="code-side-right">
+				`a + b`
+			</div>
+		</div>
+
+		<div class="code-side-row">
+			<div class="code-side-left">
 				Arithmetics
 			</div>
 			<div class="code-side-right">
@@ -207,19 +223,63 @@
 			</div>
 		</div>
 
-		<div class="code-side-row">
-			<div class="code-side-left">
-				String concatenation
-			</div>
-			<div class="code-side-right">
-				`a + b`
-			</div>
-		</div>
-
 	</textarea></section>
 </section>
 <section data-markdown><textarea data-template>
+
+	### Practical Currying
+
+	<small>Currying is a fundamental technique of **partial application**</small>
+	```
+	kebab =
+	  salad → tomato → onions → samourai(salad + tomato + onions)
+
+	auxPetitsOignons =
+	  onionFunction → onions → onionFunction(cookSlowly(onions))
+
+	kebabSaladTomato = kebab(salad)(tomato)
+	miam = auxPetitsOignons(kebabSaladTomato)
+	```
+	<!-- .element: class="fragment" -->
+
+	<small>Currying can be implemented in a **practical** way. In JS for example:</small>
+	<!-- .element: class="fragment" style="margin-top: 2%;" -->
+	```
+	const miamMiam = auxPetitsOignons(kebab(salad, tomato))
 	
+	// But strict currying would also be valid
+	const miam = auxPetitsOignons(kebab(salad)(tomato))
+	```
+	<!-- .element: class="fragment" -->
+
+</textarea></section>
+<section data-markdown><textarea data-template>
+
+	### Iterating <!-- .element: class="fragment shrink" data-fragment-index="1" -->
+	Manipulating dynamic collections happens often <!-- .element: class="fragment shrink" data-fragment-index="1" -->
+
+  ```
+  let newList = []
+  let i;
+  for (i = 0; i < list.length; i++) {
+    let newItem = operation(list[i])
+    newList.push(newItem);
+  }
+  ```
+	<!-- .element: class="fragment" data-fragment-index="1" -->
+
+	<small>
+		<span class="fragment" data-fragment-index="5">🎉 map = </span><span class="fragment" style="color: #fa0;" data-fragment-index="2">operation →</span><span class="fragment" data-fragment-index="3"> list →</span><span class="fragment" data-fragment-index="4" style="color: #1799dd;"> mappedList</span>
+	</small>
+
+</textarea></section>
+<section data-markdown><textarea data-template>
+
+	### Iterating
+
+</textarea></section>
+<section data-markdown><textarea data-template>
+
 	### Benefits
 	- Scalability
 	- Simplicity
@@ -247,16 +307,15 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.js"></script>
 		<script>
 			Reveal.initialize({
-                controls: false,
 				history: true,
-                dependencies: [
+        dependencies: [
 					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/notes/notes.js', async: true },
 				],
-            });
+      });
 		</script>
 	</body>
 </html>
